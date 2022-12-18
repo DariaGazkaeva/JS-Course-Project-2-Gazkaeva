@@ -63,7 +63,8 @@ export default {
     },
     methods: {
         ...mapActions([
-            'CLEAR_ORDERS'
+            'CLEAR_ORDERS',
+            'ADD_ORDERS'
         ]),
         clear() {
             this.CLEAR_ORDERS();
@@ -75,14 +76,46 @@ export default {
         closeModal() {
             this.modalIsOpen = false;
             this.openedModal = null;
+        },
+        getStorage() {
+            let storage = [];
+            let storageAsString = window.localStorage.getItem('orders');
+            let startIndex = 0;
+            for (let i = 0; i < storageAsString.length; i++) {
+                if (storageAsString[i] === '[' || storageAsString[i] === ']') {
+                    startIndex++;
+                } else if (storageAsString[i] === '}') {
+                    storage.push(JSON.parse(storageAsString.substring(startIndex, i + 1)));
+                    startIndex = i + 1;
+                }
+            }
+            return storage;
+        },
+        setStorage() {
+            localStorage.setItem('orders', JSON.stringify(this.ORDERS))
+        },
+        updateStorage() {
+            let storage = this.getStorage();
+            if (!storage) storage = {};
+            storage = JSON.parse(JSON.stringify(this.ORDERS));
+            this.setStorage(storage);
         }
+    },
+    created() {
+        if (this.ORDERS.length === 0) {
+            let storedOrders = this.getStorage();
+            this.ADD_ORDERS(storedOrders);
+        } else {
+            this.setStorage();
+        }
+
     },
     computed: {
         ...mapGetters([
             'CART',
             'ORDERS',
             'USER'
-        ])
+        ]),
     },
 }
 </script>
