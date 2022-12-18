@@ -68,6 +68,7 @@ export default {
         ]),
         clear() {
             this.CLEAR_ORDERS();
+            localStorage.removeItem('orders');
         },
         openModal(order) {
             this.openedModal = order;

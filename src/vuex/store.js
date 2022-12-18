@@ -15,8 +15,13 @@ let store = new Vuex.Store({
             if (!addProduct) {
                 for (let i = 0; i < state.cart.length; i++) {
                     if (state.cart[i]['id'] === product['id']) {
-                        state.cart[i]['count']++;
-                        return;
+                        if ('count' in state.cart[i]) {
+                            state.cart[i]['count']++;
+                            return;
+                        } else {
+                            state.cart[i].count = 2;
+                            return;
+                        }
                     } else {
                         addProduct = true;
                     }
