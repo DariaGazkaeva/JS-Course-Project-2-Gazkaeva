@@ -11,25 +11,44 @@ let store = new Vuex.Store({
     },
     mutations: {
         SET_CART: (state, product) => {
-            let addProduct = state.cart.length === 0;
-            if (!addProduct) {
-                for (let i = 0; i < state.cart.length; i++) {
-                    if (state.cart[i]['id'] === product['id']) {
-                        if ('count' in state.cart[i]) {
-                            state.cart[i]['count']++;
-                            return;
+            if (state.cart.length > 0) {
+                let changeCount = false;
+                state.cart.map(item => {
+                    if (item['id'] === product['id']) {
+                        if ('count' in item) {
+                            changeCount = true;
+                            item.count++;
                         } else {
-                            state.cart[i].count = 2;
-                            return;
+                            item['count'] = 2;
                         }
-                    } else {
-                        addProduct = true;
                     }
+                });
+                if (!changeCount) {
+                    state.cart.push(product);
                 }
-            }
-            if (addProduct) {
+            } else {
                 state.cart.push(product);
             }
+
+            // let addProduct = state.cart.length === 0;
+            // if (!addProduct) {
+            //     for (let i = 0; i < state.cart.length; i++) {
+            //         if (state.cart[i]['id'] === product['id']) {
+            //             if ('count' in state.cart[i]) {
+            //                 state.cart[i]['count']++;
+            //                 return;
+            //             } else {
+            //                 state.cart[i].count = 2;
+            //                 return;
+            //             }
+            //         } else {
+            //             addProduct = true;
+            //         }
+            //     }
+            // }
+            // if (addProduct) {
+            //     state.cart.push(product);
+            // }
         },
         REMOVE_FROM_CART: (state, index) => {
             state.cart.splice(index, 1);
