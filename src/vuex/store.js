@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersistence from 'vuex-persist';
 
 Vue.use(Vuex);
 
@@ -29,26 +30,6 @@ let store = new Vuex.Store({
             } else {
                 state.cart.push(product);
             }
-
-            // let addProduct = state.cart.length === 0;
-            // if (!addProduct) {
-            //     for (let i = 0; i < state.cart.length; i++) {
-            //         if (state.cart[i]['id'] === product['id']) {
-            //             if ('count' in state.cart[i]) {
-            //                 state.cart[i]['count']++;
-            //                 return;
-            //             } else {
-            //                 state.cart[i].count = 2;
-            //                 return;
-            //             }
-            //         } else {
-            //             addProduct = true;
-            //         }
-            //     }
-            // }
-            // if (addProduct) {
-            //     state.cart.push(product);
-            // }
         },
         REMOVE_FROM_CART: (state, index) => {
             state.cart.splice(index, 1);
@@ -112,6 +93,7 @@ let store = new Vuex.Store({
             return state.orders;
         },
     },
+    plugins: [new VuexPersistence().plugin]
 });
 
 export default store;
