@@ -1,12 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import VuexPersistence from 'vuex-persist';
 
 Vue.use(Vuex);
-
-// const localStorage = new VuexPersistence({
-//     reducer: (state) => ({user: state.user})
-// })
 
 let store = new Vuex.Store({
     mutations: {
@@ -161,7 +156,6 @@ let store = new Vuex.Store({
             },
         ],
     },
-//    plugins: [localStorage.plugin]
 });
 
 export default store;

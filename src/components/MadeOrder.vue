@@ -18,7 +18,10 @@
                 Количество: {{ cartItem.count }}
             </div>
             <div class="order__title">
-                Стоимость: {{ cartItem.product.price * cartItem.count}}
+                <span>Цена:</span> {{ cartItem.product.price }} руб.
+            </div>
+            <div class="order__title">
+                Итого: {{ cartItem.product.price * cartItem.count}} руб.
             </div>
         </div>
     </div>

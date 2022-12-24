@@ -24,7 +24,10 @@
                         <span>Количество:</span> {{ order.count }}
                     </div>
                     <div class="modal__title">
-                        <span>Стоимость:</span> {{ order.product.price * order.count }}
+                        <span>Цена за 1 шт.:</span> {{ order.product.price }} руб.
+                    </div>
+                    <div class="modal__title">
+                        <span>Итого:</span> {{ order.product.price * order.count }} руб.
                     </div>
                 </div>
                 <div class="info_additional">
