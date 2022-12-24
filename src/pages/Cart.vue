@@ -4,11 +4,14 @@
             <router-link :to="{name: 'catalog', params: {}}">
                 <div class="navigation-button">Каталог</div>
             </router-link>
-            <router-link :to="{name: 'profile', params: {profile: USER}}">
-                <div class="navigation-button">Личные данные</div>
+            <router-link :to="{name: 'cart', params: {}}">
+                <div class="navigation-button">Корзина</div>
             </router-link>
             <router-link :to="{name: 'orders', params: {orders: ORDERS}}">
                 <div class="navigation-button">Сделанные заказы</div>
+            </router-link>
+            <router-link :to="{name: 'profile', params: {profile: USER}}">
+                <div class="navigation-button">Личные данные</div>
             </router-link>
         </div>
         <h1>Корзина</h1>
@@ -46,7 +49,9 @@ export default {
             'REMOVE_FROM_CART',
             'INCREASE_COUNT',
             'DECREASE_COUNT',
-            'ADD_ORDERS'
+            'ADD_ORDERS',
+            'CLEAR_CART',
+            'SET_USER'
         ]),
         removeItem(index) {
             this.REMOVE_FROM_CART(index);
@@ -60,11 +65,15 @@ export default {
         makeOrder(cart) {
             if (this.USER.saved) {
                 this.ADD_ORDERS(cart);
+                this.CLEAR_CART();
                 this.$router.push('orders');
             } else {
                 alert('Заполните личные данные, чтобы сделать заказ')
             }
         }
+    },
+    created() {
+        this.SET_USER(JSON.parse(window.localStorage.getItem('profile-form')));
     },
     computed: {
         ...mapGetters([

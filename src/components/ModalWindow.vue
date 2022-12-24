@@ -30,27 +30,23 @@ export default {
 .modal {
     padding: 15px;
     position: absolute;
-    width: 68%;
-    height: 800px;
+    width: 60%;
     margin: auto;
     background: white;
     box-shadow: 0 0 10px 0 #2c3e50;
     z-index: 10;
+    flex-wrap: wrap;
 }
 .modal img {
-    display: flex;
-    max-width: 40%;
-    max-height: 70%;
+    float: left;
+    width: 100%;
+    height: 100%;
 }
 .modal__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: auto;
 }
-
 .modal__info {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 15px;

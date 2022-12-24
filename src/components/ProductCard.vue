@@ -55,7 +55,6 @@ export default {
     justify-content: space-between;
     width: 1000px;
     background-color: #ffffff;
-    height: 200px;
     padding: 12px;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -80,7 +79,8 @@ export default {
 }
 
 .card-block__image {
-    width: 33%;
+    width: 20%;
+    margin-left: 10px;
 }
 
 .card-block__info {

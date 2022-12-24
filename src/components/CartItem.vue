@@ -1,20 +1,20 @@
 <template>
     <div class="cart-item">
         <div class="cart-item__image">
-            <img :src="cartItem.image">
+            <img :src="cartItem.product.image">
         </div>
         <div class="cart-item__info">
             <div class="cart-item__info-name">
-                {{ cartItem.name }}
+                {{ cartItem.product.name }}
             </div>
             <div>
                 <span class="cart-item__title">
-                    Цена:
+                    Цена за 1 шт.:
                 </span>
-                {{ cartItem.price }}
+                {{ cartItem.product.price }}
             </div>
             <div class="cart-item__title">
-                Количество: {{ cartItem.count }}
+                Количество: {{ cartItem.count + 0 }}
             </div>
         </div>
         <div class="cart-item__control-button">
@@ -45,9 +45,6 @@ export default {
             default: () => {},
         }
     },
-    mounted() {
-        this.$set(this.cartItem, 'count', 1);
-    }
 }
 </script>
 

@@ -2,23 +2,30 @@
     <div class="profile">
 
         <div class="navigation">
-            <router-link :to="{name: 'cart', params: {cart: CART}}">
-                <div class="navigation-button">Корзина</div>
-            </router-link>
             <router-link :to="{name: 'catalog', params: {}}">
                 <div class="navigation-button">Каталог</div>
+            </router-link>
+            <router-link :to="{name: 'cart', params: {cart: CART}}">
+                <div class="navigation-button">Корзина</div>
             </router-link>
             <router-link :to="{name: 'orders', params: {orders: ORDERS}}">
                 <div class="navigation-button">Сделанные заказы</div>
             </router-link>
+            <router-link :to="{name: 'profile', params: {profile: USER}}">
+                <div class="navigation-button">Личные данные</div>
+            </router-link>
         </div>
 
         <h1>Личные данные</h1>
-        <form action="#"></form>
-        <input type="text" placeholder="ФИО" required v-model="user.name">
-        <input type="number" placeholder="Телефон" required v-model="user.phone">
-        <input type="text" placeholder="Адрес" required v-model="user.address">
-        <input type="submit" @click="save" value="Сохранить">
+        <form action="#" class="profile-form">
+            <label for="name">ФИО</label>
+            <input id="name" type="text" placeholder="Не больше 100 символов" required v-model="user.name">
+            <label for="phone">Телефон</label>
+            <input id="phone" type="number" placeholder="Начните с 8" required v-model="user.phone">
+            <label for="address">Адрес</label>
+            <input id="address" type="text" placeholder="Не больше 100 символов" required v-model="user.address">
+            <input type="submit" @click="save" value="Сохранить">
+        </form>
     </div>
 </template>
 
@@ -32,9 +39,14 @@ export default {
             'SET_USER'
         ]),
         save() {
-            this.user.saved = true;
-            this.SET_USER(this.user);
-            alert('Успешно сохранено')
+            if (this.user.name.length > 100 || this.user.address.length > 100
+                || this.user.phone.length !== 11 || this.user.name.length === 0 || this.user.address.length === 0) {
+                alert('Данные введены некорректно')
+            } else {
+                this.user.saved = true;
+                this.SET_USER(this.user);
+                alert('Успешно сохранено');
+            }
         },
         getStorage() {
             return JSON.parse(window.localStorage.getItem('profile-form'))
@@ -66,7 +78,7 @@ export default {
             user: {
                 saved: false,
                 name: '',
-                phone: 8,
+                phone: '',
                 address: '',
             }
         }
@@ -101,5 +113,9 @@ export default {
 }
 .navigation-button {
     margin: 20px;
+}
+.profile-form {
+    display: flex;
+    flex-direction: column;
 }
 </style>
