@@ -3,25 +3,24 @@
         class="order"
         @click="openModal"
     >
-        <div class="order__date">
-            Дата: {{ new Date(order.date).toLocaleDateString("ru-RU") }}
+        <div class="order__image">
+            <img :src="order.image" :alt="order.name">
         </div>
-        <div class="order__info"
-             v-for="cartItem in order.cart"
-             :key="cartItem.id"
-        >
-            <img :src="cartItem.product.image" :alt="cartItem.product.name">
+        <div class="order__info">
             <div class="order__info-name">
-                {{ cartItem.product.name }}
+                {{ order.name }}
             </div>
-            <div class="order__title">
-                Количество: {{ cartItem.count }}
+            <div>
+                <span class="order__title">
+                    Цена:
+                </span>
+                {{ order.price }} руб. / шт.
             </div>
-            <div class="order__title">
-                <span>Цена:</span> {{ cartItem.product.price }} руб.
-            </div>
-            <div class="order__title">
-                Итого: {{ cartItem.product.price * cartItem.count}} руб.
+            <div>
+                <span class="order__title">
+                    Количество:
+                </span>
+                {{ order.count }}
             </div>
         </div>
     </div>
@@ -47,14 +46,18 @@ export default {
 <style>
 .order {
     display: flex;
-    flex-direction: column;
-    width: 900px;
+    justify-content: space-between;
+    width: 800px;
     background-color: #ffffff;
+    height: 200px;
     padding: 12px;
-    margin-right: 20px;
     margin-bottom: 20px;
     transition: all 0.3s;
     cursor: pointer;
+}
+.order-button:hover {
+    box-shadow: 4px 4px 8px 4px rgba(34, 60, 80, 0.2);
+    transform: scale(1.04);
 }
 
 .order:hover {
@@ -63,33 +66,24 @@ export default {
 }
 
 .order__info {
-    display: flex;
     width: 67%;
     margin-left: 10px;
-    flex-direction: row;
 }
 
 .order img {
-    width: 150px;
-    margin-left: 10px;
-    margin-bottom: 10px;
+    max-width: 100%;
+    max-height: 97%;
+    min-height: 90%;
 }
 
 .order__info-name {
-    min-width: 150px;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     margin: 50px;
 }
 
 .order__title {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
-    margin: 50px;
-}
-.order__date {
-    font-size: 15px;
-    font-weight: bold;
-    margin: auto;
 }
 </style>

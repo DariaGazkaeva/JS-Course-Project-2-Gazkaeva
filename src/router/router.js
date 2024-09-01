@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Catalog from "@/pages/Catalog.vue";
-import Cart from "@/pages/Cart.vue";
-import Profile from "@/pages/Profile.vue";
-import MadeOrders from "@/pages/MadeOrders.vue";
+import Catalog from "@/components/Catalog.vue";
+import Cart from "@/components/Cart.vue";
+import Profile from "@/components/Profile.vue";
+import MadeOrders from "@/components/MadeOrders.vue";
 
 Vue.use(Router);
 

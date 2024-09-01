@@ -1,23 +1,23 @@
 <template>
     <div class="card-block">
-        <div class="card-block__image">
+        <div class="card-block__image" @click="openModal">
             <img :src="product.image">
         </div>
-        <div class="card-block__info">
+        <div class="card-block__info" @click="openModal">
             <div class="product__info-name">
                 {{ product.name }}
             </div>
             <div class="product__title">
-                Цена: {{ product.price }}
+                <span>Цена:</span> {{ product.price }} руб.
             </div>
             <div class="product__title">
                 <span>Информация:</span> {{ product.info }}
             </div>
         </div>
         <div class="control-button">
-            <button class="card-block" @click="addToCart">В корзину</button>
-            <button class="card-block" @click="removeFromCart">Удалить из корзины</button>
-            <button class="card-block" @click="openModal">Развернуть</button>
+            <button class="card-block" @click="addToCart">В КОРЗИНУ</button>
+            <button class="card-block" @click="removeFromCart">УДАЛИТЬ ИЗ КОРЗИНЫ</button>
+            <button class="card-block" @click="openModal">ПОДРОБНЕЕ</button>
         </div>
     </div>
 </template>
@@ -55,8 +55,8 @@ export default {
     justify-content: space-between;
     width: 1000px;
     background-color: #ffffff;
+    min-height: 90px;
     padding: 12px;
-    margin-right: 20px;
     margin-bottom: 20px;
     transition: all 0.3s;
     cursor: pointer;
@@ -64,13 +64,17 @@ export default {
 
 .card-block button {
     width: 80%;
-    height: 25%;
-    border-radius: 10px;
-    border-color: #aeaeae;
+    min-height: 25%;
     margin: auto;
     padding: 8px;
     display: inline-block;
-    background-color: #f4f4f4;
+    background-color: #4d7dab;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    font-weight: bold;
+    font-family: FreeMono, monospace;
+    font-size: 18px;
 }
 
 .card-block:hover {
@@ -79,23 +83,24 @@ export default {
 }
 
 .card-block__image {
-    width: 20%;
-    margin-left: 10px;
+    width: 33%;
+    height: 80%;
+}
+
+.card-block__image img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .card-block__info {
     width: 67%;
     margin-left: 10px;
-}
-
-.card-block img {
-    max-width: 100%;
-    max-height: 97%;
-    min-height: 90%;
+    line-height: 25px;
+    word-wrap: break-word;
 }
 
 .product__info-name {
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
     margin: 20px;
 }

@@ -1,24 +1,26 @@
 <template>
-    <div class="cart-item">
-        <div class="cart-item__image">
-            <img :src="cartItem.product.image">
+    <div
+        class="cart-item"
+    >
+        <div class="cart-item__image" >
+            <img :src="cartItem.image" :alt="cartItem.name">
         </div>
         <div class="cart-item__info">
             <div class="cart-item__info-name">
-                {{ cartItem.product.name }}
+                {{ cartItem.name }}
             </div>
             <div>
-                <span class="cart-item__title">
-                    Цена за 1 шт.:
-                </span>
-                {{ cartItem.product.price }}
+                <span class="cart-item__title">Цена: </span>{{ cartItem.price }} руб. / шт.
             </div>
-            <div class="cart-item__title">
-                Количество: {{ cartItem.count + 0 }}
+            <div>
+                <span class="cart-item__title">Количество: </span>{{ cartItem.count }} шт.
+            </div>
+            <div>
+                <span class="cart-item__title">Итого: </span>{{ cartItem.count * cartItem.price }} руб.
             </div>
         </div>
         <div class="cart-item__control-button">
-            <button class="cart-button" @click="removeFromCart">Delete</button>
+            <button class="cart-button" @click="removeFromCart">УДАЛИТЬ</button>
             <button class="cart-button" @click="increaseCount">+</button>
             <button class="cart-button" @click="decreaseCount">-</button>
         </div>
@@ -37,6 +39,9 @@ export default {
         },
         decreaseCount() {
             this.$emit('decreaseCount');
+        },
+        openModal() {
+            this.$emit('openModal', this.cartItem);
         }
     },
     props: {
@@ -44,7 +49,7 @@ export default {
             type: Object,
             default: () => {},
         }
-    },
+    }
 }
 </script>
 
@@ -54,9 +59,8 @@ export default {
     justify-content: space-between;
     width: 800px;
     background-color: #ffffff;
-    height: 200px;
+    min-height: 200px;
     padding: 12px;
-    margin-right: 20px;
     margin-bottom: 20px;
     transition: all 0.3s;
     cursor: pointer;
@@ -64,13 +68,18 @@ export default {
 
 .cart-button {
     width: 100%;
-    height: 20%;
-    border-radius: 10px;
-    border-color: #aeaeae;
+    min-height: 25%;
     margin: auto;
     padding: 8px;
     display: inline-block;
-    background-color: #f4f4f4;
+    background-color: #4d7dab;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    font-weight: bold;
+    font-family: FreeMono, monospace;
+    font-size: 18px;
+    transition: all 0.3s;
 }
 
 .cart-button:hover {
@@ -88,6 +97,11 @@ export default {
     margin-left: 10px;
 }
 
+.cart-item__image {
+    max-width: 25%;
+    align-self: center;
+}
+
 .cart-item img {
     max-width: 100%;
     max-height: 97%;
@@ -103,6 +117,7 @@ export default {
 .cart-item__title {
     font-size: 16px;
     font-weight: bold;
+    line-height: 1.5;
 }
 .cart-item__control-button {
     display: flex;
