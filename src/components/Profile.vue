@@ -50,7 +50,7 @@ export default {
         hideNotification() {
             setTimeout(() => {
                 this.notificationIsShow = false
-            }, 4000);
+            }, 3000);
         }
     },
     watch: {

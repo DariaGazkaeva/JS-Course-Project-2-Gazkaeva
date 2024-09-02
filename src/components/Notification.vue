@@ -21,11 +21,11 @@ export default {
     background-color: #d6d3d4;
     box-shadow: 4px 4px 8px 4px rgba(34, 60, 80, 0.2);
     opacity: 0;
-    animation: ani 4s forwards;
+    animation: ani 3s forwards;
 }
 @keyframes ani {
     0% {opacity: 0}
-    20% {opacity: 1; background-color: #d66d77; color: white}
+    10% {opacity: 1; background-color: #d66d77; color: white}
     60% {opacity: 1; background-color: #d66d77; color: white}
     100% {opacity: 0}
 }

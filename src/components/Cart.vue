@@ -117,7 +117,7 @@ export default {
             this.notificationIsShow = true;
             setTimeout(() => {
                 this.notificationIsShow = false
-            }, 4000);
+            }, 3000);
         }
     },
     computed: {
