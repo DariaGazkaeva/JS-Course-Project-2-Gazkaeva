@@ -1,7 +1,7 @@
 <template>
     <div class="card-block">
         <div class="card-block__image" @click="openModal">
-            <img :src="product.image">
+            <img :src="product.image" alt="image">
         </div>
         <div class="card-block__info" @click="openModal">
             <div class="product__info-name">

@@ -10,7 +10,7 @@
             <div class="navigation-button">Личные данные</div>
         </router-link>
         <router-link :to="{name: 'orders', params: {orders: ORDERS}}">
-            <div class="navigation-button">Сделанные заказы</div>
+            <div class="navigation-button">Заказы</div>
         </router-link>
     </div>
 </template>
@@ -42,7 +42,7 @@ export default {
 }
 .navigation a, .navigation a:visited {
     color: black;
-    transition-duration: 0.5s;
+    transition-duration: 0.25s;
 }
 .navigation a:hover {
     background: #4d7dab;
