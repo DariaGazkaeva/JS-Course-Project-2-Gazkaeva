@@ -39,7 +39,7 @@
                 v-for="(item, index) in CART"
                 :key="item.id"
                 :cartItem="item"
-                @removeFromCart="removeItemsFromCart(index)"
+                @removeFromCart="removeFromCart(index)"
                 @decreaseCount="decreaseCount(index)"
                 @increaseCount="increaseCount(index)"
                 @openModal="openModal"
@@ -88,8 +88,11 @@ export default {
             this.modalIsOpen = false;
             this.openedModal = null;
         },
-        removeItemsFromCart() {
+        removeAllFromCart() {
             this.REMOVE_ALL_FROM_CART();
+        },
+        removeFromCart(index) {
+            this.REMOVE_FROM_CART(index);
         },
         increaseCount(index) {
             this.INCREASE_COUNT(index);
@@ -100,7 +103,7 @@ export default {
         makeOrder() {
             if (this.USER.saved) {
                 this.ADD_ORDERS(this.cart);
-                this.removeItemsFromCart();
+                this.removeAllFromCart();
                 this.$router.push('orders');
             } else {
                 this.requestPersonalData();
