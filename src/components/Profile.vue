@@ -4,9 +4,19 @@
         <Navigation/>
         <h1>Личные данные</h1>
         <form action="#">
-            <label>ФИО<input type="text" placeholder="Введите ФИО" required v-model="user.name"></label>
-            <label>Номер телефона<input type="number" placeholder="Введите номер телефона" required v-model="user.phone"></label>
-            <label>Адрес<input type="text" placeholder="Введите адрес" required v-model="user.address"></label>
+            <label>
+                ФИО
+                <input type="text" placeholder="Введите ФИО" required v-model="user.name">
+            </label>
+            <label>
+                Номер телефона
+                <input type="tel" placeholder="Введите номер телефона" required v-model="user.phone">
+            </label>
+            <label>
+                Адрес
+                <input type="text" placeholder="Введите адрес" required v-model="user.address">
+            </label>
+
             <input type="submit" @click.prevent="save" value="Сохранить">
         </form>
     </div>
@@ -99,7 +109,7 @@ export default {
     margin-right: auto;
     margin-left: auto;
 }
-.profile input[type=text], .profile input[type=number] {
+.profile input[type=text], .profile input[type=tel] {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
