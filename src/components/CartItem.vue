@@ -20,9 +20,24 @@
             </div>
         </div>
         <div class="cart-item__control-button">
-            <button class="cart-button" @click="removeFromCart">УДАЛИТЬ</button>
-            <button class="cart-button" @click="increaseCount">+</button>
-            <button class="cart-button" @click="decreaseCount">-</button>
+            <button
+                class="cart-button"
+                @click="removeFromCart"
+            >
+                УДАЛИТЬ
+            </button>
+            <button
+                class="cart-button"
+                @click="increaseCount"
+            >
+                +
+            </button>
+            <button
+                :class="cartItem.count === 1 ? 'cart-button disabled' : 'cart-button'"
+                @click="decreaseCount"
+            >
+                -
+            </button>
         </div>
     </div>
 </template>
@@ -85,6 +100,15 @@ export default {
 .cart-button:hover {
     box-shadow: 4px 4px 8px 4px rgba(34, 60, 80, 0.2);
     transform: scale(1.04);
+    cursor: pointer;
+}
+
+.disabled, .disabled:hover {
+    background-color: #cccccc;
+    transition: none;
+    box-shadow: none;
+    transform: none;
+    cursor: default;
 }
 
 .cart-item:hover {
