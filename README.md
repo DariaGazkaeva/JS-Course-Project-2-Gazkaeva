@@ -1,6 +1,12 @@
 # Интернет-магазин настольных игр
-Деплой: https://js-course-project-2-gazkaeva.vercel.app/#/  
-  
+https://js-course-project-2-gazkaeva.vercel.app
+
+Стек:
+- Vue
+- Vuex
+- Vue Router
+
+## Описание приложения
 Доступны четыре вкладки: 
 - каталог
 - корзина
